@@ -1,0 +1,1029 @@
+/* =========================================
+   Variables
+   ========================================= */
+:root {
+    --dark-blue: #03022e;
+    --medium-blue: #1c1a5b;
+    --yellow-accent: #fbd614;
+    --white: #ffffff;
+    --text-gray: #e0e0e0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 100px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--dark-blue); /* Invertido */
+    color: var(--white);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* =========================================
+   Custom Scrollbar (Barra de desplazamiento)
+   ========================================= */
+
+/* 1. Para Firefox */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--medium-blue) var(--dark-blue);
+}
+
+/* 2. Para Chrome, Edge y Safari */
+::-webkit-scrollbar {
+    width: 12px; /* Ancho de la barra */
+}
+
+/* Fondo de la barra */
+::-webkit-scrollbar-track {
+    background: var(--dark-blue); 
+}
+
+/* La barrita que se mueve */
+::-webkit-scrollbar-thumb {
+    background-color: var(--medium-blue); 
+    border-radius: 10px; /* Bordes bien redondeados */
+    border: 3px solid var(--dark-blue); /* Esto crea un efecto de margen entre la barra y la pista */
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto al pasar el mouse por la barrita */
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--yellow-accent); 
+}
+
+/* =========================================
+   Botones
+   ========================================= */
+.btn-primary {
+    display: inline-block;
+    background-color: var(--yellow-accent);
+    color: var(--medium-blue); /* Invertido */
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 5px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #e5c20c;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    display: inline-block;
+    border: 2px solid var(--yellow-accent);
+    color: var(--yellow-accent);
+    font-weight: 700;
+    padding: 8px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background-color: var(--yellow-accent);
+    color: var(--medium-blue); /* Invertido */
+}
+
+/* =========================================
+   Header
+   ========================================= */
+.header {
+    background-color: transparent; 
+    padding: 20px 0;
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--white);
+}
+
+.logo span {
+    color: var(--yellow-accent);
+}
+
+/* =========================================
+   Hero Section Modificado (Fondo Sierras + Curva)
+   ========================================= */
+.hero {
+    position: relative;
+    background-image: url('assets/imagen1.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 90vh; 
+    display: flex;
+    align-items: center;
+    clip-path: ellipse(120% 100% at 50% 0%);
+    z-index: 2; 
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(3, 2, 46, 0.75);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding-bottom: 10px; 
+}
+
+.hero-text {
+    flex: 1;
+    max-width: 600px;
+}
+
+.hero-text h2 {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    margin-bottom: 30px;
+}
+
+/* Contenedor para botones al lado */
+.hero-buttons {
+    display: flex;
+    gap: 15px; 
+    align-items: center;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.5));
+    border-radius: 10px;
+}
+
+/* =========================================
+   Hero Stats (Indicadores de confianza)
+   ========================================= */
+.hero-stats {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    padding-left: 40px; /* Separamos los indicadores un poco del texto principal */
+}
+
+.stat-item {
+    background-color: rgba(3, 2, 46, 0.3); /* Fondo sutil para que resalte del paisaje */
+    padding: 25px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px); /* Efecto vidrio esmerilado */
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    border-color: rgba(251, 214, 20, 0.4); /* El borde se pinta un poquito de amarillo al pasar el mouse */
+}
+
+.stat-value {
+    display: flex;
+    align-items: center;
+    gap: 4px; /* Apenitas un espacio entre el + y el número */
+    font-size: 2.6rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1;
+}
+
+.stat-divider {
+    width: 35px;
+    border: none;
+    border-top: 3px solid var(--white); /* Línea separadora blanca */
+    margin: 15px 0;
+}
+
+.stat-label {
+    display: block;
+    color: var(--yellow-accent);
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+/* =========================================
+   Servicios Section (Moderna)
+   ========================================= */
+.services {
+    background-color: var(--dark-blue); /* Invertido */
+    position: relative;
+    z-index: 1; 
+    margin-top: -80px; 
+    padding: 140px 0 100px; 
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--yellow-accent);
+    margin-bottom: 60px; 
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 40px; 
+}
+
+.service-card {
+    background-color: var(--medium-blue); /* Invertido */
+    padding: 40px 30px; 
+    border-radius: 16px; 
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(251, 214, 20, 0.3); 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background-color: rgba(251, 214, 20, 0.08); 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    transition: all 0.4s ease;
+}
+
+.icon-wrapper i {
+    font-size: 2.2rem;
+    color: var(--yellow-accent);
+    transition: color 0.4s ease;
+}
+
+.service-card:hover .icon-wrapper {
+    background-color: var(--yellow-accent);
+    transform: scale(1.1);
+}
+
+.service-card:hover .icon-wrapper i {
+    color: var(--medium-blue); /* Invertido */
+}
+
+.service-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.service-card p {
+    color: var(--text-gray);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* =========================================
+   About Section (Sobre Nosotros)
+   ========================================= */
+.about {
+    background-color: var(--medium-blue); /* Invertido */
+    padding: 100px 0;
+    width: 90%;
+    margin: auto;
+    border-radius: 40px;
+    margin-bottom: 40px;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    width: 90%;
+}
+
+.about-image {
+    flex: 1;
+    position: relative;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    object-fit: cover;
+}
+
+.experience-badge {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    background-color: var(--yellow-accent);
+    color: var(--dark-blue); /* Invertido */
+    padding: 20px 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.experience-badge span {
+    font-size: 2.5rem;
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1;
+}
+
+.experience-badge p {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-top: 5px;
+    color: var(--dark-blue); /* Invertido */
+}
+
+.about-text {
+    flex: 1;
+}
+
+.section-title.left-align {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.about-text .subtitle {
+    font-size: 1.4rem;
+    color: var(--white);
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+.about-text p {
+    color: var(--text-gray);
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+
+.about-list {
+    list-style: none;
+    margin-top: 30px;
+}
+
+.about-list li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    color: var(--text-gray);
+    font-size: 1.05rem;
+}
+
+.about-list i {
+    color: var(--yellow-accent);
+    font-size: 1.2rem;
+    margin-top: 3px;
+}
+
+.about-list strong {
+    color: var(--white);
+}
+
+/* =========================================
+   Reviews Section (Reseñas de Google)
+   ========================================= */
+.reviews {
+    background-color: var(--dark-blue); /* Invertido */
+    padding: 100px 0;
+}
+
+.reviews-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.reviews-header .section-title {
+    margin-bottom: 15px;
+}
+
+.google-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+}
+
+.google-rating .stars {
+    color: var(--yellow-accent);
+    font-size: 1.2rem;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.review-card {
+    background-color: var(--medium-blue); /* Invertido */
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+}
+
+.review-user {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+    background-color: #4285F4; 
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.review-card:nth-child(2) .avatar { background-color: #0F9D58; }
+.review-card:nth-child(3) .avatar { background-color: #DB4437; }
+
+.user-info h4 {
+    font-size: 1.05rem;
+    color: var(--white);
+    margin-bottom: 2px;
+}
+
+.user-info span {
+    font-size: 0.85rem;
+    color: #a0a0a0;
+}
+
+.google-icon {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    color: #a0a0a0;
+    font-size: 1.2rem;
+}
+
+.review-stars {
+    color: var(--yellow-accent);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.review-card p {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+/* =========================================
+   Contact Section (Formulario WhatsApp)
+   ========================================= */
+.contact {
+    position: relative;
+    padding: 120px 0;
+    background-image: linear-gradient(rgba(28, 26, 91, 0.85), rgba(28, 26, 91, 0.95)), url('assets/imagen2.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+}
+
+.contact-container {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    z-index: 2;
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-info p {
+    color: var(--text-gray);
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+}
+
+.info-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.1rem;
+    color: var(--white);
+    background-color: var(--dark-blue); 
+    padding: 15px 20px;
+    border-radius: 8px;
+    border-left: 4px solid var(--yellow-accent);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.info-item:hover {
+    transform: translateX(10px); /* Se desliza 10 píxeles a la derecha */
+    border-left: 8px solid var(--yellow-accent); /* La línea se hace más gruesa */
+    background-color: #04033a; /* Aclaramos apenitas el fondo azul oscuro */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Sombra para que "salga" de la pantalla */
+}
+
+.info-item i {
+    color: var(--yellow-accent);
+    font-size: 1.3rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.info-item:hover i {
+    transform: scale(1.2); /* El ícono crece un poquito */
+    color: #ffe033; /* Se pone un amarillo más brillante */
+}
+
+.contact-form-wrapper {
+    flex: 1;
+    background-color: rgba(3, 2, 46, 0.85); 
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    backdrop-filter: blur(10px); 
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    color: var(--text-gray);
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 15px 18px; 
+    background-color: var(--medium-blue); /* Invertido */
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    border-radius: 8px; 
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--yellow-accent);
+    box-shadow: 0 0 10px rgba(251, 214, 20, 0.2); 
+    background-color: var(--medium-blue); /* Invertido */
+}
+
+.form-group input:-webkit-autofill,
+.form-group textarea:-webkit-autofill,
+.form-group select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px var(--medium-blue) inset !important; /* Invertido */
+    -webkit-text-fill-color: var(--white) !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fbd614' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 18px;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+.form-group select option {
+    background-color: var(--medium-blue); /* Invertido */
+    color: var(--white);
+    padding: 10px;
+}
+
+.form-submit {
+    text-align: right; 
+    margin-top: 30px;
+}
+
+.w-100 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-submit {
+    background-color: var(--yellow-accent);
+    color: var(--medium-blue); /* Invertido */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    padding: 16px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(251, 214, 20, 0.2);
+}
+
+.btn-submit i {
+    font-size: 1.4rem;
+}
+
+.btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(251, 214, 20, 0.4);
+    background-color: #ffe033; 
+}
+
+/* =========================================
+   Footer
+   ========================================= */
+.footer {
+    background-color: var(--dark-blue); /* Se funde perfecto con la paleta */
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Sutil separación visual */
+    padding: 60px 0 30px 0;
+    color: var(--white);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-info {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.footer-info h3 {
+    color: var(--white);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.footer-info p {
+    color: var(--text-gray);
+    font-size: 1.1rem;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.footer-info i {
+    color: var(--yellow-accent); /* Mismo color de íconos que el resto de la web */
+    font-size: 1.3rem;
+}
+
+.footer-info a {
+    color: var(--text-gray);
+    transition: color 0.3s ease;
+}
+
+.footer-info a:hover {
+    color: var(--yellow-accent);
+}
+
+/* Línea divisoria sutil */
+.footer-divider {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0 0 25px 0;
+}
+
+/* Flexbox para alinear Copyright y la firma de Kairos */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    color: #a0a0a0;
+    font-size: 0.95rem;
+}
+
+.span-topografia {
+    color: var(--yellow-accent);
+}
+
+.footer-copy p, 
+.footer-credits p {
+    margin: 0;
+}
+
+/* Estilos exclusivos para la firma de Kairos */
+.kairos-link {
+    color: var(--yellow-accent);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.kairos-link:hover {
+    color: var(--white);
+    text-shadow: 0 0 10px rgba(251, 214, 20, 0.3); /* Un brillito sutil al pasar el mouse */
+}
+
+/* =========================================
+   Botón Flotante WhatsApp 
+   ========================================= */
+.whatsapp-float {
+    position: fixed;
+    width: 65px;
+    height: 65px;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25D366; 
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 35px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 9999; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+    color: white;
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN (Media Queries Consolidadas)
+   ========================================= */
+
+/* Tablets y pantallas medianas (max-width: 992px) */
+@media (max-width: 992px) {
+    .about-container,
+    .contact-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 50px;
+    }
+
+    .section-title.left-align {
+        text-align: center;
+    }
+
+    .about-list li {
+        text-align: left; 
+    }
+
+    .contact-form-wrapper {
+        width: 100%;
+        text-align: left; /* Mantenemos el formulario alineado a la izquierda */
+    }
+
+    .stat-value {
+        font-size: 2.2rem; 
+    }
+}
+
+/* Teléfonos y tablets pequeñas (max-width: 768px) */
+@media (max-width: 768px) {
+    /* Ajustes generales de espaciados y tipografía */
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+
+    .services {
+        padding: 80px 0 60px;
+        margin-top: -40px; /* Sube menos porque la curva es más chica */
+    }
+
+    .about {
+        padding: 60px 0;
+        width: 95%; /* Ocupa más ancho en celular */
+        border-radius: 20px;
+    }
+
+    .reviews, .contact {
+        padding: 60px 0;
+    }
+
+    /* Ajustes del Hero para evitar que el texto pise al menú */
+    .hero {
+        clip-path: ellipse(200% 100% at 50% 0%); /* Curva más suave en celular */
+    }
+
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 100px; /* Da aire al header */
+        gap: 20px;
+    }
+
+    .hero-text h2 {
+        font-size: 2.2rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-buttons a {
+        width: 100%;
+    }
+
+    .hero-image {
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .hero-image img {
+        max-width: 80%; /* Achicamos un poco la imagen en celular */
+    }
+
+    /* Ajustes Sobre Nosotros */
+    .experience-badge {
+        right: 10px;
+        bottom: -15px;
+        padding: 15px 20px;
+    }
+
+    .experience-badge span {
+        font-size: 2rem;
+    }
+
+    /* Ajustes Reseñas */
+    .reviews-grid {
+        grid-template-columns: 1fr; /* Una columna para que no se rompa */
+    }
+
+    /* Ajustes Formulario */
+    .contact-form-wrapper {
+        padding: 30px 20px;
+    }
+
+    /* Botón Flotante un poco más discreto */
+    .whatsapp-float {
+        width: 55px;
+        height: 55px;
+        font-size: 30px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .stat-value {
+        font-size: 2.2rem; 
+    }
+
+    /* =========================================
+       CORRECCIONES PARA LOS STATS EN MÓVIL
+       ========================================= */
+    .hero-stats {
+        padding-left: 0; /* Quita el margen izquierdo de la versión PC */
+        margin-top: 40px; /* Separa un poco más los botones de los stats */
+        width: 100%;
+        gap: 15px;
+    }
+
+    .stat-item {
+        padding: 20px 15px;
+        /* Centramos el contenido dentro de la caja */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Le damos más aire al Hero por debajo para que la curva no tape los stats */
+    .hero-content {
+        padding-bottom: 80px; 
+    }
+}
+
+/* Teléfonos muy pequeños (max-width: 480px) */
+@media (max-width: 480px) {
+    .logo h1 {
+        font-size: 1.2rem;
+    }
+
+    .btn-outline {
+        padding: 6px 15px;
+        font-size: 0.9rem;
+    }
+
+    .hero-text h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .stat-value {
+        font-size: 2.2rem; 
+    }
+}
